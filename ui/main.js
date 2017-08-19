@@ -38,7 +38,7 @@ btnSubmit.onclick = function(){
                  ul.innerHTML = list;
             }
         }
-    }
+    };
     request.open('GET','http://umabalu93.imad.hasura-app.io/submit-name?name=' + name, true);
     request.send(null);
     
