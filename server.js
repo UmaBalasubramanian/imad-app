@@ -5,6 +5,37 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne ={
+    title: 'Article One | Uma',
+    heading: 'Article - One',
+    date: 'Aug 19, 2017',
+    content: `<p>
+        My contents are very simple and I am the first article of this web-app.
+    </p>`
+}
+
+function template(data){
+    var title = data.title;
+    var date = data.date;
+    var heading = data.heading;
+    var content = data.content;
+    var htmlTemplate = `<html>
+  <title>
+    ${title}
+  </title>
+  <body>
+      <a href="/">Home</a>
+    <h1>
+     ${heading}
+    </h1>
+    <div>
+        ${date}
+    </div>
+    ${content}
+   </body>
+</html>`;
+
+}
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
@@ -18,7 +49,7 @@ app.get('/ui/madi.png', function (req, res) {
 });
 
 app.get('/article-one', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+    res.sendFile(template(articleOne));
 });
 
 app.get('/article-two', function(req,res){
