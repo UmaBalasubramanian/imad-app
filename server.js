@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var counter = 0;
+var names = [];
 
 var app = express();
 app.use(morgan('combined'));
@@ -82,6 +83,14 @@ app.get('/:articlename', function(req,res){
     var articlename = req.params.articlename;
     res.send(template(articles[articlename]));
 });
+
+app.get('/submit-name/:name', function(req,res){
+    var name = req.params.name;
+    
+    names.push(name);
+    res.send(JSON.stringify(names));
+});
+
 
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
