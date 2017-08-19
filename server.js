@@ -79,10 +79,6 @@ app.get('/counter', function(req,res){
     res.send(counter.toString());
 });
 
-app.get('/:articlename', function(req,res){
-    var articlename = req.params.articlename;
-    res.send(template(articles[articlename]));
-});
 
 app.get('/submit-name', function(req,res){
     var name = req.query.name;
@@ -91,6 +87,10 @@ app.get('/submit-name', function(req,res){
     res.send(JSON.stringify(names));
 });
 
+app.get('/:articlename', function(req,res){
+    var articlename = req.params.articlename;
+    res.send(template(articles[articlename]));
+});
 
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
