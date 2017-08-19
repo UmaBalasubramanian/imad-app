@@ -1,18 +1,17 @@
-<!doctype html>
-<html>
-    <head>
-        <link href="/ui/style.css" rel="stylesheet" />
-    </head>
-    <body>
-        <div id="img" class="center">
-            <img src="/ui/madi.png" class="img-medium"/>
-        </div>
-        <br>
-        <div id ="main-text" class="center text-big bold">
-            Hi! I am Uma and this is my first web app!
-	    And I have edited it again :)
-        </div>
-        <script type="text/javascript" src="/ui/main.js">
-        </script>
-    </body>
-</html>
+console.log('Loaded!');
+
+var element = document.getElementById('main-text');
+element.innerHTML = "Hola!!";
+
+
+var img = document.getElementById('img');
+var marginLeft = 0;
+function moveRight(){
+        marginLeft = marginLeft +1;
+     img.style.marginLeft = marginLeft+"px";
+}
+
+img.onclick = function(){
+    var interval = setInterval(moveRight, 100);
+};
+
