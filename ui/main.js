@@ -5,5 +5,5 @@ var btnCounter = document.getElementById('btnCounter');
 var spanCounter = document.getElementById('counter');
 btnCounter.onclick = function(){
     spanCounetr = spanCounter +1;
-    spanCounter.innerHTML = spanCounter;
+    spanCounter.innerHTML = spanCounter.toString();
 };
