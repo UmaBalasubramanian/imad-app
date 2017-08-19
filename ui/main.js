@@ -5,5 +5,5 @@ element.innerHTML = "Hola!!";
 
 var img = document.getElementById('img');
 img.onclick = function(){
-    img.style.marginLeft = "10 px";
+    img.style.marginLeft = "10px";
 };
