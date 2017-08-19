@@ -13,6 +13,22 @@ var articleOne ={
         My contents are very simple and I am the first article of this web-app.
     </p>`
 }
+var articleTwo ={
+    title: 'Article Two | Uma',
+    heading: 'Article - Two',
+    date: 'Aug 20, 2017',
+    content: `<p>
+        My contents are very simple and I am the second article of this web-app.
+    </p>`
+}
+var articleThree ={
+    title: 'Article Three | Uma',
+    heading: 'Article - Three',
+    date: 'Aug 20, 2017',
+    content: `<p>
+        My contents are very simple and I am the third article of this web-app.
+    </p>`
+}
 
 function template(data){
     var title = data.title;
@@ -55,11 +71,11 @@ app.get('/article-one', function(req,res){
 });
 
 app.get('/article-two', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
+    res.send(template(articleTwo));
 });
 
 app.get('/article-three', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
+    res.send(template(articleThree));
 });
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
