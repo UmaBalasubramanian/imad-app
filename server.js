@@ -24,7 +24,7 @@ var articleTwo ={
 var articleThree ={
     title: 'Article Three | Uma',
     heading: 'Article - Three',
-    date: 'Aug 20, 2017',
+    date: 'Aug 21, 2017',
     content: `<p>
         My contents are very simple and I am the third article of this web-app.
     </p>`
