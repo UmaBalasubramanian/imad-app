@@ -5,30 +5,33 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne ={
-    title: 'Article One | Uma',
-    heading: 'Article - One',
-    date: 'Aug 19, 2017',
-    content: `<p>
-        My contents are very simple and I am the first article of this web-app.
-    </p>`
+var articles ={
+        articleOne :{
+        title: 'Article One | Uma',
+        heading: 'Article - One',
+        date: 'Aug 19, 2017',
+        content: `<p>
+            My contents are very simple and I am the first article of this web-app.
+        </p>`
+    },
+     articleTwo:{
+        title: 'Article Two | Uma',
+        heading: 'Article - Two',
+        date: 'Aug 20, 2017',
+        content: `<p>
+            My contents are very simple and I am the second article of this web-app.
+        </p>`
+    },
+    articleThree :{
+        title: 'Article Three | Uma',
+        heading: 'Article - Three',
+        date: 'Aug 21, 2017',
+        content: `<p>
+            My contents are very simple and I am the third article of this web-app.
+        </p>`
+    }
 }
-var articleTwo ={
-    title: 'Article Two | Uma',
-    heading: 'Article - Two',
-    date: 'Aug 20, 2017',
-    content: `<p>
-        My contents are very simple and I am the second article of this web-app.
-    </p>`
-}
-var articleThree ={
-    title: 'Article Three | Uma',
-    heading: 'Article - Three',
-    date: 'Aug 21, 2017',
-    content: `<p>
-        My contents are very simple and I am the third article of this web-app.
-    </p>`
-}
+
 
 function template(data){
     var title = data.title;
@@ -66,8 +69,8 @@ app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
 
-app.get('/article-one', function(req,res){
-    res.send(template(articleOne));
+app.get('/:articlename', function(req,res){
+    res.send(template(articlename));
 });
 
 app.get('/article-two', function(req,res){
