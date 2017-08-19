@@ -20,7 +20,7 @@ btnCounter.onclick = function(){
     
 };
 
-var name = document.getElementById('name');
+var name = document.getElementById('name').value;
 var btnSubmit = document.getElementById('btnSubmit');
 btnSubmit.onclick = function(){
     
@@ -30,9 +30,8 @@ btnSubmit.onclick = function(){
             if(request.status == 200){
                 var names = JSON.parse(request.responseText);
                 var list = '';
-                for(var i=0; i<names.length;i++){
+                for(var i=0; i < names.length;i++){
                     list += '<li>' + names[i].toString() +'</li>';
-                   
                 }
                  var ul = document.getElementById('listNames');
                  ul.innerHTML = list;
