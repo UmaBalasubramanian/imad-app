@@ -1,17 +1,9 @@
 console.log('Loaded!');
 
-var element = document.getElementById('main-text');
-element.innerHTML = "Hola!!";
-
-
-var img = document.getElementById('img');
-var marginLeft = 0;
-function moveRight(){
-        marginLeft = marginLeft +1;
-     img.style.marginLeft = marginLeft+"px";
-}
-
-img.onclick = function(){
-    var interval = setInterval(moveRight, 100);
+var counter =0;
+var btnCounter = document.getElementById('btnCounter');
+var spanCounter = document.getElementById('counter');
+btnCounter.onclick = function(){
+    spanCounetr = spanCounter +1;
+    spanCounter.innerHTML = spanCounter;
 };
-
