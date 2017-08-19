@@ -19,3 +19,16 @@ btnCounter.onclick = function(){
     request.send(null);
     
 };
+
+var name = document.getElementById('name');
+var btnSubmit = document.getElementById('btnSubmit');
+btnSubmit.onclick = function(){
+    var names = ['name1','name2','name3'];
+    var list = '';
+    for(var i=0; i<names.length;i++){
+        list += '<li>' + names[i] +'</li>';
+       
+    }
+     var ul = document.getElementById('listNames');
+     ul.innerHTML = list;
+}
