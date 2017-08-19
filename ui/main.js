@@ -20,12 +20,13 @@ btnCounter.onclick = function(){
     
 };
 
-var name = document.getElementById('name').value;
+
 var btnSubmit = document.getElementById('btnSubmit');
 btnSubmit.onclick = function(){
-    
+    var name = document.getElementById('name').value;
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
+        
         if(request.readyState == XMLHttpRequest.DONE){
             if(request.status == 200){
                 var names = JSON.parse(request.responseText);
