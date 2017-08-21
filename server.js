@@ -120,7 +120,7 @@ app.get('/articles/:articlename', function(req,res){
             }
             else{
                 articleData = result.rows[0];
-                res.send(template(articles[articleData]));
+                res.send(template(articleData));
             }
         }
     } );
