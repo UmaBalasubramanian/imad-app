@@ -17,32 +17,7 @@ var names = [];
 var app = express();
 app.use(morgan('combined'));
 
-var articles ={
-        'article-one' :{
-        title: 'Article One | Uma',
-        heading: 'Article - One',
-        date: 'Aug 19, 2017',
-        content: `<p>
-            My contents are very simple and I am the first article of this web-app.
-        </p>`
-    },
-     'article-two':{
-        title: 'Article Two | Uma',
-        heading: 'Article - Two',
-        date: 'Aug 20, 2017',
-        content: `<p>
-            My contents are very simple and I am the second article of this web-app.
-        </p>`
-    },
-    'article-three' :{
-        title: 'Article Three | Uma',
-        heading: 'Article - Three',
-        date: 'Aug 21, 2017',
-        content: `<p>
-            My contents are very simple and I am the third article of this web-app.
-        </p>`
-    }
-}
+
 
 
 function template(data){
