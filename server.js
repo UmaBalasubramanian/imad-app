@@ -2,6 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var Pool = require('pg').Pool;
+var crypto = require('crypto');
 var counter = 0;
 var port = 80;
 var names = [];
@@ -80,6 +81,16 @@ app.get('/submit-name', function(req,res){
     
     names.push(name);
     res.send(JSON.stringify(names));
+});
+
+function hash(input, salt){
+   var hashed =  crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
+   return hashed.toString('hex');
+}
+
+app.get('/hash/:input',function(req,res){
+    var hashedString = hash(req.params.input, 'a-random-string');
+    res.send(hashedString);
 });
 
 app.get('/articles/:articlename', function(req,res){
