@@ -87,7 +87,7 @@ app.get('/submit-name', function(req,res){
 
 function hash(input, salt){
    var hashed =  crypto.pbkdf2Sync(input, salt, 10000, 512, 'sha512');
-   return hashed.toString('hex');
+   return ["pbkdf2","10000", salt, hashed.toString('hex')].join('$');
 }
 
 app.post('/create-user', function(req, res){
@@ -101,6 +101,27 @@ app.post('/create-user', function(req, res){
         }
         else{
             res.send("User "+username+" Created Successfully!");
+        }
+    });
+});
+
+app.post('/login', function(req, res){
+    var username = req.body.username;
+    var password = req.body.password;
+  
+    pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err,result){
+        if(err){
+            res.status(500).send(err.toString);
+        }
+        else{
+            if(res.rows.length === 0){
+                res.status(403).send("User is forbidden")
+            }
+            else{
+                var dbString = result.rows[0].password;
+                res.send("User "+username+" Created Successfully!");
+            }
+            
         }
     });
 });
