@@ -128,7 +128,7 @@ app.post('/login', function(req, res){
                 var salt =dbString.split('$')[2];
                 var hashedPassword = hash(password, salt);
                 if(hashedPassword === dbString){
-                    req.session.auth = {userId: result.rows[0].id};
+                    req.session.auth = {userId: result.rows[0].id, userName: result.rows[0].username};
                     res.send("Credentials are correct");
                 }
                 else{
@@ -144,7 +144,7 @@ app.post('/login', function(req, res){
 app.get('/check-login', function(req,res){
     if(req.session && req.session.auth && req.session.auth.userId){
         
-        res.status(200).send(req.session.auth.userId.toString());
+        res.status(200).send(req.session.auth.userName);
     }
     else{
         res.status(403).send('You are not logged in ');
