@@ -1,5 +1,6 @@
 console.log('Loaded!');
 function loadLoginDiv(){
+    console.log('Function executed');
     var request = new XMLHttpRequest();
     request.open('GET','http://umabalu93.imad.hasura-app.io/check-login', true);
     request.send(null);
