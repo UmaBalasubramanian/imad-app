@@ -1,45 +1,34 @@
 console.log('Loaded!');
 
-var btnCounter = document.getElementById('btnCounter');
-var spanCounter = document.getElementById('counter');
-
-btnCounter.onclick = function(){
-    //counter = counter +1;
-    
-    var request = new XMLHttpRequest();
-    request.onreadystatechange = function(){
-        if(request.readyState == XMLHttpRequest.DONE){
-            if(request.status == 200){
-              var  counter = request.responseText;
-              spanCounter.innerHTML = counter.toString();
-            }
-        }
-    }
-    request.open('GET', 'http://umabalu93.imad.hasura-app.io/counter', true);
-    request.send(null);
-    
-};
 
 
 var btnSubmit = document.getElementById('btnSubmit');
 btnSubmit.onclick = function(){
-    var name = document.getElementById('name').value;
+    
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         
         if(request.readyState == XMLHttpRequest.DONE){
-            if(request.status == 200){
-                var names = JSON.parse(request.responseText);
-                var list = '';
-                for(var i=0; i < names.length;i++){
-                    list += '<li>' + names[i].toString() +'</li>';
-                }
-                 var ul = document.getElementById('listNames');
-                 ul.innerHTML = list;
+            if(request.status === 200){
+               console.log("User logged in successfully!!");
+               alert('Login successful');
+            }
+            else if(request.status === 403){
+                alert('Password is incorrect');
+            }
+            else if(request.status === 500){
+                alert('Some error occured');
             }
         }
     };
-    request.open('GET','http://umabalu93.imad.hasura-app.io/submit-name?name=' + name, true);
-    request.send(null);
+    
+    var nameElement = document.getElementById('username').value;
+    var name = nameElement.value;
+    var passwordElement = document.getElementById('password').value;
+    var password = passwordElement.value;
+    console.log(username +" "+ password);
+    request.open('POST','http://umabalu93.imad.hasura-app.io/login', true);
+    request.setRequestHeader('Content-Type: application/json');
+    request.send(JSON.stringify({username: username, password: password}));
     
 }
