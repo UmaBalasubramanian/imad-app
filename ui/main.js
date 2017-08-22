@@ -24,9 +24,9 @@ btnSubmit.onclick = function(){
     var name = nameElement.value;
     var passwordElement = document.getElementById('password');
     var password = passwordElement.value;
-    console.log(username +" "+ password);
+    console.log(name +" "+ password);
     request.open('POST','http://umabalu93.imad.hasura-app.io/login', true);
     request.setRequestHeader('Content-Type',' application/json');
-    request.send(JSON.stringify({username: username, password: password}));
+    request.send(JSON.stringify({username: name, password: password}));
     
 }
