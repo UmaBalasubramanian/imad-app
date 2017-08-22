@@ -6,7 +6,7 @@ function loadLoginDiv(){
     request.onreadystatechange = function(){
         if(request.status === 200){
              var login = document.getElementById("login");
-               login.innerHTML = "Welcome "+name;
+               login.innerHTML = "Welcome "+;
         }
         
     };
@@ -26,7 +26,7 @@ btnLogin.onclick = function(){
                console.log("User logged in successfully!!");
                alert('Login successful');
                var login = document.getElementById("login");
-               login.innerHTML = "Welcome "+name;
+               login.innerHTML = "Welcome "+request.params;
             }
             else if(request.status === 403){
                 alert('Password is incorrect');
