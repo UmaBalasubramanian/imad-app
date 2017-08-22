@@ -1,7 +1,5 @@
 console.log('Loaded!');
 
-
-
 var btnSubmit = document.getElementById('btnSubmit');
 btnSubmit.onclick = function(){
     
@@ -28,7 +26,7 @@ btnSubmit.onclick = function(){
     var password = passwordElement.value;
     console.log(username +" "+ password);
     request.open('POST','http://umabalu93.imad.hasura-app.io/login', true);
-    request.setRequestHeader('Content-Type: application/json');
+    request.setRequestHeader('Content-Type',' application/json');
     request.send(JSON.stringify({username: username, password: password}));
     
 }
