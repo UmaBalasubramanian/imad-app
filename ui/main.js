@@ -6,7 +6,7 @@ function loadLoginDiv(){
     request.onreadystatechange = function(){
         if(request.status === 200){
              var login = document.getElementById("login");
-               login.innerHTML = "Welcome ";
+               login.innerHTML = "Welcome "+ request.session.auth.userName;
         }
         
     };
