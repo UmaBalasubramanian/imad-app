@@ -114,7 +114,7 @@ app.post('/login', function(req, res){
             res.status(500).send(err.toString);
         }
         else{
-            if(res.rows.length === 0){
+            if(result.rows.length === 0){
                 res.status(403).send("User is forbidden")
             }
             else{
