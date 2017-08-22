@@ -45,6 +45,10 @@ function template(data){
         ${date.toDateString()}
     </div>
     ${content}
+    <div id = "comments">
+    Comments :
+        ${comment}
+    </div>
    </body>
 </html>`;
 
