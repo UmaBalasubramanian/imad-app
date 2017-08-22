@@ -20,9 +20,9 @@ btnSubmit.onclick = function(){
         }
     };
     
-    var nameElement = document.getElementById('username').value;
+    var nameElement = document.getElementById('username');
     var name = nameElement.value;
-    var passwordElement = document.getElementById('password').value;
+    var passwordElement = document.getElementById('password');
     var password = passwordElement.value;
     console.log(username +" "+ password);
     request.open('POST','http://umabalu93.imad.hasura-app.io/login', true);
