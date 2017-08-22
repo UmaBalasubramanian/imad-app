@@ -2,7 +2,7 @@ console.log('Loaded!');
 
 var btnLogin = document.getElementById('btnLogin');
 var btnRegister = document.getElementById('btnRegister');
-btnSubmit.onclick = function(){
+btnLogin.onclick = function(){
     
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
