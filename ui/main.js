@@ -2,15 +2,16 @@ console.log('Loaded!');
 function loadLoginDiv(){
     console.log('Function executed');
     var request = new XMLHttpRequest();
-    request.open('GET','http://umabalu93.imad.hasura-app.io/check-login', true);
-    request.send(null);
+    
     request.onreadystatechange = function(){
         if(request.status === 200){
              var login = document.getElementById("login");
                login.innerHTML = "Welcome "+name;
         }
         
-    }
+    };
+    request.open('GET','http://umabalu93.imad.hasura-app.io/check-login', true);
+    request.send(null);
 }
 
 var btnLogin = document.getElementById('btnLogin');
