@@ -32,6 +32,7 @@ function template(data){
     var date = data.date;
     var heading = data.heading;
     var content = data.content;
+    
     var htmlTemplate = `<html>
   <title>
     ${title}
@@ -45,10 +46,7 @@ function template(data){
         ${date.toDateString()}
     </div>
     ${content}
-    <div id = "comments">
-    Comments :
-        ${comment}
-    </div>
+    
    </body>
 </html>`;
 
