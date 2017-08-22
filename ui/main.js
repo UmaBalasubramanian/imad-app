@@ -11,6 +11,8 @@ btnLogin.onclick = function(){
             if(request.status === 200){
                console.log("User logged in successfully!!");
                alert('Login successful');
+               var login = document.getElementById("login");
+               login.innerHTML = "Welcome "+name;
             }
             else if(request.status === 403){
                 alert('Password is incorrect');
@@ -35,7 +37,6 @@ btnRegister.onclick = function(){
     var request = new XMLHttpRequest();
     request.onreadystatechange = function(){
         if(request.status == 200){
-            //Replace the Login div by the username
             alert('User created successfully');
         }
         else if(request.status == 500){
