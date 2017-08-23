@@ -11,7 +11,7 @@ var port = 80;
 var names = [];
 
 var app = express();
-var pool = new Pool(config);
+
 
 app.use(morgan('combined'));
 app.use(bodyparser.json());
@@ -27,7 +27,7 @@ var config={
     port: '5432',
     password : 'db-umabalu93-75012'
 }
-
+var pool = new Pool(config);
 
 function template(data){
     var title = data.title;
