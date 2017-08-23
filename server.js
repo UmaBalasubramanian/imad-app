@@ -11,6 +11,8 @@ var port = 80;
 var names = [];
 
 var app = express();
+var pool = new Pool(config);
+
 app.use(morgan('combined'));
 app.use(bodyparser.json());
 app.use(session({
@@ -74,7 +76,7 @@ app.get('/counter', function(req,res){
     res.send(counter.toString());
 });
 
-var pool = new Pool(config);
+
 app.get('/test-db', function(req, res){
     pool.query("SELECT * FROM test", function(err, result){
         if(err){
@@ -204,6 +206,24 @@ app.get('/articles/:articlename', function(req,res){
             }
         }
     } );
+    
+    
+});
+
+app.get('/getarticles', function(req,res){
+    //Get the articles from the DB
+    var articles = pool.query("SELECT * FROM article", function(err,result){
+        if(err){
+            res.set('Content-Type', 'application/json');
+			var jsonError = {
+				error: "Some error occured"
+			}
+        }
+		else{
+			res.send(result.rows[0]);
+			
+		}
+    })
     
     
 });
