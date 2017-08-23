@@ -126,11 +126,17 @@ app.post('/login', function(req, res){
   
     pool.query('SELECT * FROM "user" WHERE username = $1', [username], function(err,result){
         if(err){
-            res.status(500).send(err.toString);
+           var json = JSON.stringify({
+                        error : "Some error occured"
+                    });
+                    res.status(500).send(json);
         }
         else{
             if(result.rows.length === 0){
-                res.status(403).send("User is forbidden");
+                var json = JSON.stringify({
+                        error : "Credentials Invalid"
+                    });
+                    res.status(403).send(json);
             }
             else{
                 var dbString = result.rows[0].password;
