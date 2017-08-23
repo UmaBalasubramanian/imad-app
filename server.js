@@ -105,10 +105,17 @@ app.post('/create-user', function(req, res){
     var dbString = hash(password, salt);
     pool.query('INSERT INTO "user" (username, password) VALUES ($1, $2)', [username, dbString], function(err,result){
         if(err){
-            res.status(500).send(err.toString);
+            
+            var json = JSON.stringify({
+                error: "Some error occured"
+            });
+            res.status(500).send(json);
         }
         else{
-            res.send("User "+username+" Created Successfully!");
+            var json = JSON.stringify({
+                message : "User Created Successfully"
+            });
+            res.send(json);
         }
     });
 });
@@ -131,10 +138,16 @@ app.post('/login', function(req, res){
                 var hashedPassword = hash(password, salt);
                 if(hashedPassword === dbString){
                     req.session.auth = {userId: result.rows[0].id, userName: result.rows[0].username};
-                    res.send("Credentials are correct");
+                    var json = JSON.stringify({
+                        message : "Credentials are correct"
+                    });
+                    res.send(json);
                 }
                 else{
-                    res.status(403).send("Credentials Invalid");
+                     var json = JSON.stringify({
+                        message : "Credentials Invalid"
+                    });
+                    res.status(403).send(json);
                 }
                 
             }
