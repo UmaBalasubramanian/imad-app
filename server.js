@@ -216,8 +216,9 @@ app.get('/getarticles', function(req,res){
         if(err){
             res.set('Content-Type', 'application/json');
 			var jsonError = {
-				error: "Some error occured"
+				error: err.toString()
 			}
+			res.send(json);
         }
 		else{
 			res.send("Data got!");
