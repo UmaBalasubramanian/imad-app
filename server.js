@@ -224,7 +224,7 @@ app.get('/getarticles', function(req,res){
 			res.send("Data got!");
 			
 		}
-    })
+    });
     
     
 });
