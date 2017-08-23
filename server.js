@@ -210,7 +210,23 @@ app.get('/articles/:articlename', function(req,res){
     
 });
 
-
+app.get('/getarticles', function(req,res){
+    //Get the articles from the DB
+    var articles = pool.query("SELECT * FROM article", function(err,result){
+        if(err){
+            res.set('Content-Type', 'application/json');
+			var jsonError = {
+				error: "Some error occured"
+			}
+        }
+		else{
+			res.send(result.rows[0]);
+			
+		}
+    })
+    
+    
+});
 
 // Do not change port, otherwise your app won't run on IMAD servers
 // Use 8080 only for local development if you already have apache running on 80
