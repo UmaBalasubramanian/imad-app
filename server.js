@@ -109,14 +109,14 @@ app.post('/create-user', function(req, res){
             var json = JSON.stringify({
                 error: "Some error occured"
             });
-            res.writeHead(200, {"Content-Type": "application/json"});
+            res.set('Content-Type', 'application/json');
             res.status(500).send(json);
         }
         else{
             var json = JSON.stringify({
                 message : "User Created Successfully"
             });
-            res.writeHead(200, {"Content-Type": "application/json"});
+           res.set('Content-Type', 'application/json');
             res.send(json);
         }
     });
@@ -132,7 +132,7 @@ app.post('/login', function(req, res){
            var json = JSON.stringify({
                         error : "Some error occured"
                     });
-                    res.writeHead(200, {"Content-Type": "application/json"});
+                    res.set('Content-Type', 'application/json');
                     res.status(500).send(json);
         }
         else{
@@ -140,7 +140,7 @@ app.post('/login', function(req, res){
                 var json = JSON.stringify({
                         error : "Credentials Invalid"
                     });
-                    res.writeHead(200, {"Content-Type": "application/json"});
+                    res.set('Content-Type', 'application/json');
                     res.status(403).send(json);
             }
             else{
@@ -152,14 +152,14 @@ app.post('/login', function(req, res){
                     var json = JSON.stringify({
                         message : "Credentials are correct"
                     });
-                    res.writeHead(200, {"Content-Type": "application/json"});
+                    res.set('Content-Type', 'application/json');
                     res.send(json);
                 }
                 else{
                      var json = JSON.stringify({
                         error : "Credentials Invalid"
                     });
-                    res.writeHead(200, {"Content-Type": "application/json"});
+                   res.set('Content-Type', 'application/json');
                     res.status(403).send(json);
                 }
                 
