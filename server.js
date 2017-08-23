@@ -145,7 +145,7 @@ app.post('/login', function(req, res){
                 }
                 else{
                      var json = JSON.stringify({
-                        message : "Credentials Invalid"
+                        error : "Credentials Invalid"
                     });
                     res.status(403).send(json);
                 }
